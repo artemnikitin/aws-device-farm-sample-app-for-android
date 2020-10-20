@@ -22,16 +22,15 @@ android {
     packagingOptions {
         exclude 'LICENSE.txt'
     }
-
-
-
-
+    
     lintOptions {
         abortOnError false
     }
 }
 
 repositories {
+    jcenter()
+    google()
     mavenCentral()
 }
 
