@@ -19,18 +19,19 @@ def main():
     string_to_wait_for = "{}:5555	device".format(args.emulator)
     print("Waiting for: {}".format(string_to_wait_for))
 
-    counter = 0
+    counter = 1
     devices_list = execute("adb devices")
     while string_to_wait_for not in devices_list:
+        print("Attempt {} ...".format(counter))
         time.sleep(10)
         execute("adb kill-server")
         execute("adb connect {}:5555".format(args.emulator))
         devices_list = execute("adb devices")
         counter += 1
-        if counter == 30:
+        if counter > 30:
+            print(execute("adb devices"))
             print("Can not connect to an emulator! Exiting...")
             exit(-1)
-    print(execute("adb devices"))
 
 
 def execute(cmd):
