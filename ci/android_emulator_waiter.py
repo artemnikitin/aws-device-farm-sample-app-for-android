@@ -30,7 +30,7 @@ def main():
         counter += 1
         if counter > 30:
             print(execute("adb devices"))
-            print("Can not connect to an emulator! Exiting...")
+            print("Can't connect to an emulator {}".format(string_to_wait_for))
             exit(-1)
 
 
